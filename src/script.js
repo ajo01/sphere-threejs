@@ -52,8 +52,8 @@ light2.add(pointLight2.position, "y").min(-6).max(6).step(0.1);
 light2.add(pointLight2.position, "z").min(-3).max(3).step(0.1);
 light2.add(pointLight2, "intensity").min(0).max(10).step(0.1);
 
-const pointLightHelper = new THREE.PointLightHelper(pointLight2, 1);
-scene.add(pointLightHelper);
+// const pointLightHelper = new THREE.PointLightHelper(pointLight2, 1);
+// scene.add(pointLightHelper);
 
 // Light3
 const pointLight3 = new THREE.PointLight(0x96ff, 2);
@@ -77,8 +77,8 @@ light3.addColor(light3color, "color").onChange(() => {
   pointLight3.color.set(light3color.color);
 });
 
-const pointLightHelper3 = new THREE.PointLightHelper(pointLight3, 1);
-scene.add(pointLightHelper3);
+// const pointLightHelper3 = new THREE.PointLightHelper(pointLight3, 1);
+// scene.add(pointLightHelper3);
 
 /**
  * Sizes
@@ -150,6 +150,13 @@ function onDocumentMouseMove(event) {
   mouseY = event.clientY - windowHalfY;
 }
 
+// scroll animate
+
+const updateSphere = (e) => {
+  sphere.position.y = window.scrollY * 0.001;
+};
+window.addEventListener("scroll", updateSphere);
+
 const clock = new THREE.Clock();
 
 const tick = () => {
@@ -163,7 +170,7 @@ const tick = () => {
 
   sphere.rotation.x += 0.05 * (targetY - sphere.rotation.x);
   sphere.rotation.y += 0.5 * (targetX - sphere.rotation.y);
-  sphere.rotation.z += -0.05 * (targetY - sphere.rotation.x);
+  sphere.position.z += -0.05 * (targetY - sphere.rotation.x);
 
   // Update Orbital Controls
   // controls.update()
