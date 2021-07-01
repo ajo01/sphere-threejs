@@ -44,6 +44,11 @@ pointLight2.position.set(1, 1, 1);
 pointLight2.intensity = 1;
 scene.add(pointLight2);
 
+gui.add(pointLight2.position, "x").min(-6).max(6).step(0.1);
+gui.add(pointLight2.position, "y").min(-6).max(6).step(0.1);
+gui.add(pointLight2.position, "z").min(-3).max(3).step(0.1);
+gui.add(pointLight2, "intensity").min(0).max(10).step(0.1);
+
 /**
  * Sizes
  */
